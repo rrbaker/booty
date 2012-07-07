@@ -1,0 +1,77 @@
+/*//	STRAPPED
+			A theme for Ushahidi v2.4+
+			Based on the Twitter Bootstrap Framework
+			http://twitter.github.com/bootstrap/
+			Developed by Rob Baker, rrbaker.com
+			On GitHub at: http://github.com/rrbaker/strapped
+*/
+
+/*// =GLOBAL */
+
+body {
+	background-color: #fff;
+	background-image: none;
+	padding-top: 60px !important;
+	}
+
+#main {
+	margin: 0;
+	}
+
+/* global.css overrides */
+.label {
+	display: inline !important;
+	}	
+
+/* search form (reverse engineer default) */
+div.search-form {
+	margin: 0;
+	float: none;
+	}
+div.search-form input.text {
+	padding: 2px 0px 2px 0px;
+	border: none;
+	margin: 0;
+	background: auto;
+	width: auto;
+	font-size: inherit;
+	}
+div.search-form input.searchbtn {
+	border: none;
+	background-color: auto;
+	background: none;
+	width: auto;
+	height: auto;
+	margin: 0;
+	text-indent: auto;
+	cursor: pointer;
+	padding: auto;
+	text-transform: uppercase;
+	}
+
+/*// =REPORTS */
+
+.report-meta {
+	margin: 5px 0;
+	}
+
+/* map */
+.report-map .map-holder {
+	clear: both;
+	width: auto;
+	height: 350px;
+	border: 1px solid #C0C2B8;
+	border-bottom: 1px solid #C0C2B8;
+	}
+
+/* Submit Report button (RE) */
+div.submit-incident {
+	margin: 0;
+	position: inherit;
+	width: 300px;
+	}
+
+/* Map edits */
+.map {
+	clear: both;
+	}
