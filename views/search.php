@@ -1,13 +1,14 @@
 <div id="content">
-	<div class="content-bg">
-		<!-- start search block -->
-		<div class="big-block">
+	<div class="row">
+		<div class="span12">
 			<h1>Search Results</h1>
-			<div class="search_block">
-				<?php echo $search_info; ?>
-				<?php echo $search_results; ?>
-			</div>
+			<?php echo $search_info; ?>
 		</div>
-		<!-- end search block -->
+	</div>
+	
+	<div class="row">
+		<div class="span12">
+			<?php echo $search_results; ?>
+		</div>
 	</div>
 </div>
