@@ -14,40 +14,84 @@ body {
 	padding-top: 60px !important;
 	}
 
-#main {
+#main,
+.big-block {
 	margin: 0;
+	padding: 0;
+	}
+div#content {
+	width: inherit;
 	}
 
 /* global.css overrides */
 .label {
 	display: inline !important;
-	}	
+	}
 
-/* search form (reverse engineer default) */
-div.search-form {
-	margin: 0;
-	float: none;
+
+/*//	=HEADER */
+
+#masthead {
+	height: 70px;
 	}
-div.search-form input.text {
-	padding: 2px 0px 2px 0px;
-	border: none;
+
+/* search form */
+#site-search {
+	margin-top: 13px;
+	}
+#site-search input {
+	width: 264px;
+	}
+
+/* languages */
+div.language-box {
+	padding: 0;
 	margin: 0;
-	background: auto;
-	width: auto;
+	}
+div.language-box select {
+	width: 220px;
+	padding: 0;
 	font-size: inherit;
+	color: #000;
 	}
-div.search-form input.searchbtn {
-	border: none;
-	background-color: auto;
-	background: none;
+
+/* submit button */
+#submit-report {
+	margin-top: 7px;
+	}
+
+
+/*//	=HOMEPAGE */
+
+/* map */
+div.map {
+	width: auto;
+	}
+#mapStatus {
+	float: none;
+	overflow: hidden;
+	margin-bottom: 10px;
+	width: auto;
+	}
+
+/* filters */
+.map-filters {
+	clear: both;
+	}
+.map-filters ul li {
+	display: inline;
+	text-transform: uppercase;
+	font-size: 11px;
+	}
+
+/* timeline */
+div.slider-holder {
 	width: auto;
 	height: auto;
-	margin: 0;
-	text-indent: auto;
-	cursor: pointer;
-	padding: auto;
-	text-transform: uppercase;
+	padding: 0;
 	}
+
+
 
 /*// =REPORTS */
 
@@ -56,7 +100,8 @@ div.search-form input.searchbtn {
 	}
 
 /* map */
-.report-map .map-holder {
+.report-map .map-holder,
+.report_map {
 	clear: both;
 	width: auto;
 	height: 350px;
@@ -75,3 +120,33 @@ div.submit-incident {
 .map {
 	clear: both;
 	}
+
+
+
+/*//	=FOOTER */
+
+footer[role="contentinfo"] {
+	padding: 15px 0 0 0;
+	font-size: 14px;
+	}
+#footer_inner {
+	border-top: 1px solid #ddd;
+	}
+footer[role="contentinfo"] nav ul li {
+	display: inline;
+	margin: 0 10px 0 0;
+	padding: 0 10px 0 0;
+	font-weight: bold;
+	border-right: 1px solid #ccc;
+	}
+footer[role="contentinfo"] nav ul li:last-child {
+	margin: 0;
+	padding: 0;
+	border: none;
+	}
+footer[role="contentinfo"] p {
+	margin: 10px 0;
+	}	
+
+div#schedulerholder { display: none; }
+
