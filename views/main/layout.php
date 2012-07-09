@@ -9,15 +9,16 @@
 		<?php endif; ?>
 	</div>
 	
-	<div id="content" class="span8">
-		<!-- filters -->
+	<div id="main-content" class="span8">
+		<?php echo $div_map; ?>
+
 		<div class="map-filters">
-			<strong><?php echo Kohana::lang('ui_main.filters'); ?>:</strong>
 			<ul class="unstyled">
-				<li><a id="media_0" class="active" href="#"><span class="label"><?php echo Kohana::lang('ui_main.reports'); ?></span></a></li>
-				<li><a id="media_4" href="#"><span class="label"><?php echo Kohana::lang('ui_main.news'); ?></span></a></li>
-				<li><a id="media_1" href="#"><span class="label"><?php echo Kohana::lang('ui_main.pictures'); ?></span></a></li>
-				<li><a id="media_2" href="#"><span class="label"><?php echo Kohana::lang('ui_main.video'); ?></span></a></li>
+				<li><b><?php echo Kohana::lang('ui_main.filters'); ?>:</b></li>
+				<li><a id="media_0" class="active" href="#"><span class="label label-info"><?php echo Kohana::lang('ui_main.reports'); ?></span></a></li>
+				<li><a id="media_4" href="#"><span class="label label-info"><?php echo Kohana::lang('ui_main.news'); ?></span></a></li>
+				<li><a id="media_1" href="#"><span class="label label-info"><?php echo Kohana::lang('ui_main.pictures'); ?></span></a></li>
+				<li><a id="media_2" href="#"><span class="label label-info"><?php echo Kohana::lang('ui_main.video'); ?></span></a></li>
 			</ul>
 
 			<?php
@@ -25,12 +26,8 @@
 			Event::run('ushahidi_action.map_main_filters');
 			?>
 		</div> <!-- / filters -->
-
-		<?php								
-		// Map and Timeline Blocks
-		echo $div_map;
-		echo $div_timeline;
-			?>
+		
+		<?php echo $div_timeline; ?>
 	</div> <!-- /content -->
 
 	<div id="sidebar" class="span4">
