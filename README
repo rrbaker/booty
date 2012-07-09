@@ -1,4 +1,4 @@
-Theme Name: Strapped
+Theme Name: Booty
 Description: A responsive, HTML5 Ushahidi theme based on the Twitter Bootstrap framework.
 Demo: http://rrbaker.com
 Version: 1.0 alpha
