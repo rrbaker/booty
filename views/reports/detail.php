@@ -27,7 +27,7 @@
 			<?php Event::run('ushahidi_action.report_meta_after_time', $incident_id); ?>
 		</div>
 
-		<div class="report-category-list">
+		<div class="report-categories">
 		<p>
 			<?php
 				foreach ($incident_category as $category)
