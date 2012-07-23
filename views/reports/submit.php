@@ -14,7 +14,7 @@
 	<input type="hidden" name="incident_zoom" id="incident_zoom" value="<?php echo $form['incident_zoom']; ?>" />
 	<div class="row">
 		<div id="report-header" class="span12">
-			<h2><?php echo Kohana::lang('ui_main.reports_submit_new'); ?></h2>
+			<h2 class="page-title"><?php echo Kohana::lang('ui_main.reports_submit_new'); ?></h2>
 
 			<?php if ($form_error): ?>
 			<!-- red-box -->
@@ -51,18 +51,20 @@
 			</div>
 			<div class="report_row">
 				<label><?php echo Kohana::lang('ui_main.reports_description'); ?> <span class="required">*</span> </label>
-				<?php print form::textarea('incident_description', $form['incident_description'], 'class="span6" ') ?>
+				<?php print form::textarea('incident_description', $form['incident_description'], 'rows="13" class="span6" ') ?>
 			</div>
 			<div class="report_row" id="datetime_default">
-				<label>
+					<label for="incident_date_time"><?php echo Kohana::lang('ui_main.date_time'); ?></label>
+					<?php print form::input('incident_date_time', ' class="span5 disabled"'); ?>
+
 					<a href="#" id="date_toggle" class="show-more"><?php echo Kohana::lang('ui_main.modify_date'); ?></a>
-					<?php echo Kohana::lang('ui_main.date_time'); ?>:<br>
+
 					<?php echo Kohana::lang('ui_main.today_at')." "."<span id='current_time'>".$form['incident_hour']
 						.":".$form['incident_minute']." ".$form['incident_ampm']."</span>"; ?>
 					<?php if($site_timezone): ?>
 						<small>(<?php echo $site_timezone; ?>)</small>
 					<?php endif; ?>
-				</label>
+				
 			</div>
 			<div class="report_row hide" id="datetime_edit">
 				<div class="date-box">
@@ -104,10 +106,12 @@
 				</div>
 				<div style="display:block;" id="incident_date_time"></div>
 			</div>
+
 			<div class="report_row">
 				<!-- Adding event for endtime plugin to hook into -->
 			<?php Event::run('ushahidi_action.report_form_frontend_after_time'); ?>
 			</div>
+
 			<div class="report_row">
 				<label><?php echo Kohana::lang('ui_main.reports_categories'); ?> <span class="required">*</span></label>
 				<div class="report_category" id="categories">
@@ -115,13 +119,10 @@
 					$selected_categories = (!empty($form['incident_category']) AND is_array($form['incident_category']))
 						? $selected_categories = $form['incident_category']
 						: array();
-						
-					
 					echo category::form_tree('incident_category', $selected_categories, 2);
 					?>
 				</div>
 			</div>
-
 
 			<?php
 			// Action::report_form - Runs right after the report categories
@@ -130,7 +131,7 @@
 
 			<?php echo $custom_forms ?>
 
-			<div class="report_optional">
+			<div id="report_optional" class="well">
 				<h3><?php echo Kohana::lang('ui_main.reports_optional'); ?></h3>
 				<div class="report_row">
 					<label><?php echo Kohana::lang('ui_main.reports_first'); ?></label>
@@ -138,11 +139,11 @@
 				</div>
 				<div class="report_row">
 					<label><?php echo Kohana::lang('ui_main.reports_last'); ?></label>
-					<?php print form::input('person_last', $form['person_last'], ' class="text long"'); ?>
+					<?php print form::input('person_last', $form['person_last'], ' class="span5"'); ?>
 				</div>
 				<div class="report_row">
 					<label><?php echo Kohana::lang('ui_main.reports_email'); ?></label>
-					<?php print form::input('person_email', $form['person_email'], ' class="text long"'); ?>
+					<?php print form::input('person_email', $form['person_email'], ' class="span5"'); ?>
 				</div>
 				<?php
 				// Action::report_form_optional - Runs in the optional information of the report form
@@ -204,12 +205,12 @@
 							<li><a href="#" class="btn btn-info btn-mini"><?php echo utf8::strtoupper(Kohana::lang('ui_main.clear_map'));?></a></li>
 						</ul>
 					</div>
+					
 					<?php print form::input('location_find', '', ' title="'.Kohana::lang('ui_main.location_example').'" class="findtext"'); ?>
-					<div>
-						<input type="button" name="button" id="button" value="<?php echo Kohana::lang('ui_main.find_location'); ?>" class="btn btn-inverse" />
-					</div>
+					<input type="button" name="button" id="button" value="<?php echo Kohana::lang('ui_main.find_location'); ?>" class="btn btn-inverse">
+
 					<div id="find_loading" class="report-find-loading"></div>
-					<div id="find_text"><?php echo Kohana::lang('ui_main.pinpoint_location'); ?>.</div>
+					<small><?php echo Kohana::lang('ui_main.pinpoint_location'); ?></small>
 				</div>
 			</div>
 			<?php Event::run('ushahidi_action.report_form_location', $id); ?>
@@ -258,24 +259,18 @@
 
 
 			<!-- Video Fields -->
-			<div id="divVideo" class="report_row">
+			<div id="report-videos" class="control-group">
 				<label><?php print Kohana::lang('ui_main.external_video_link'); ?></label>
-				<?php 
-					// Initialize the counter
-					$i = (empty($form['incident_video'])) ? 1 : 0;
-				?>
-
+				<?php $i = (empty($form['incident_video'])) ? 1 : 0; ?>
 				<?php if (empty($form['incident_video'])): ?>
-					<div class="report_row">
-						<?php print form::input('incident_video[]', '', ' class="text long2"'); ?>
-						<a href="#" class="add" onClick="addFormField('divVideo','incident_video','video_id','text'); return false;">add</a>
-					</div>
+					<?php print form::input('incident_video[]', '', ' class="span5"'); ?>
+					<a href="#" class="add" onClick="addFormField('divVideo','incident_video','video_id','text'); return false;">add</a>
 				<?php else: ?>
 					<?php foreach ($form['incident_video'] as $value): ?>
-						<div class="report_row" id="<?php  echo $i; ?>">
+						<div class="control-group" id="<?php  echo $i; ?>">
 
-						<?php print form::input('incident_video[]', $value, ' class="text long2"'); ?>
-						<a href="#" class="add" onClick="addFormField('divVideo','incident_video','video_id','text'); return false;">add</a>
+						<?php print form::input('incident_video[]', $value, ' class="span5"'); ?>
+						<a href="#" class="btn btn-mini" onClick="addFormField('divVideo','incident_video','video_id','text'); return false;">add</a>
 
 						<?php if ($i != 0): ?>
 							<?php $css_id = "#incident_video_".$i; ?>
@@ -292,24 +287,17 @@
 			</div>
 			
 			<?php Event::run('ushahidi_action.report_form_after_video_link'); ?>
-
+ 
 			<!-- Photo Fields -->
-			<div id="divPhoto" class="report_row">
+			<div id="report-photos" class="control-group">
 				<label><?php echo Kohana::lang('ui_main.reports_photos'); ?></label>
-				<?php 
-					// Initialize the counter
-					$i = (empty($form['incident_photo']['name'][0])) ? 1 : 0;
-				?>
-
+				<?php $i = (empty($form['incident_photo']['name'][0])) ? 1 : 0; ?>
 				<?php if (empty($form['incident_photo']['name'][0])): ?>
-				<div class="report_row">
-					<?php print form::upload('incident_photo[]', '', ' class="span6"'); ?>
-					<a href="#" class="add" onClick="addFormField('divPhoto', 'incident_photo','photo_id','file'); return false;">add</a>
-				</div>
+					<?php print form::upload('incident_photo[]', '', ' class="input-file"'); ?>
+					<a href="#" class="btn btn-mini" onClick="addFormField('divPhoto','incident_photo','photo_id','file'); return false;">add</a>
 				<?php else: ?>
 					<?php foreach ($form['incident_photo']['name'] as $value): ?>
-
-						<div class="report_row" id="<?php echo $i; ?>">
+						<div id="<?php echo $i; ?>">
 							<?php print form::upload('incident_photo[]', $value, ' class="span6"'); ?>
 							<a href="#" class="add" onClick="addFormField('divPhoto','incident_photo','photo_id','file'); return false;">add</a>
 
@@ -317,20 +305,19 @@
 								<?php $css_id = "#incident_photo_".$i; ?>
 								<a href="#" class="rem"	onClick="removeFormField('<?php echo $css_id; ?>'); return false;">remove</a>
 							<?php endif; ?>
-
 						</div>
 
 						<?php $i++; ?>
-
 					<?php endforeach; ?>
 				<?php endif; ?>
 
 				<?php print form::input(array('name'=>'photo_id','type'=>'hidden','id'=>'photo_id'), $i); ?>
-			</div>
-								
-			<div class="report_row">
-				<input name="submit" type="submit" value="<?php echo Kohana::lang('ui_main.reports_btn_submit'); ?>" class="btn btn-primary" /> 
-			</div>
+			</div> <!-- /report-photos -->
+
+		</div>
+
+		<div class="span12 form-actions">
+					<input name="submit" type="submit" value="<?php echo Kohana::lang('ui_main.reports_btn_submit'); ?>" class="btn btn-primary btn-large">
 		</div>
 	</div>
 	</fieldset>

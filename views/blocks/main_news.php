@@ -37,5 +37,6 @@
 		?>
 	</tbody>
 </table>
+
 <a class="btn btn-default" href="<?php echo url::site() . 'feeds' ?>"><?php echo Kohana::lang('ui_main.view_more'); ?></a>
 <?php blocks::close();?>

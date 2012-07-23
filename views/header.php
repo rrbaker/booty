@@ -51,7 +51,7 @@
 					<?php } ?>
 				</ul>
 				<div class="btn-group pull-right">
-					<a class="btn dropdown-toggle" data-toggle="dropdown" href="#">
+					<a class="btn btn-primary dropdown-toggle" data-toggle="dropdown" href="#">
 						<i class="icon-user"></i> Login
 						<span class="caret"></span>
 					</a>
@@ -61,17 +61,15 @@
 						<li><a href="#">Sign Out</a></li>
 					</ul>
 				</div>
-				<form class="navbar-search pull-right">
+				<div class="pull-right">
 					<?php echo $languages;?>
-				</form>
+				</div>
 			</div>
 		</div>
 	</div> <!-- /nav-main -->
 
 	<div id="bento" class="container">
 		<div id="masthead" class="row">
-
-			<!-- logo -->
 			<?php if ($banner == NULL): ?>
 			<div id="sitename" class="span6">
 				<h1><a href="<?php echo url::site();?>"><?php echo $site_name; ?></a></h1>
@@ -96,9 +94,13 @@
 					</div>
 				<?php form::close(); ?>
 			</div>
-		</div>
+		</div> <!-- /masthead -->
 
 		<?php
 			// Action::header_item - Additional items to be added by plugins
 			Event::run('ushahidi_action.header_item');
 		?>
+
+		<hr>
+
+		

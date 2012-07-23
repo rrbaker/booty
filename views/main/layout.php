@@ -220,11 +220,11 @@
 	</div> <!-- /sidebar-->
 </div> <!-- /main_content -->
 
+<hr>
+
 <!-- blocks -->
-<div class="blocks">
-	<div class="content-blocks row">
-		<ul class="content-column">
-			<?php blocks::render(); ?>
-		</ul>
-	</div> <!-- /content blocks -->
+<div class="blocks row">
+	<ul class="content-column">
+		<?php blocks::render(); ?>
+	</ul>
 </div><!-- /blocks -->

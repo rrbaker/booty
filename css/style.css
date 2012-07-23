@@ -11,7 +11,7 @@
 body {
 	background-color: #fff;
 	background-image: none;
-	padding-top: 60px !important;
+	padding-top: 65px !important;
 	}
 
 #main,
@@ -28,16 +28,36 @@ div#content {
 	display: inline !important;
 	}
 
+/* forms */
+#incident_title {
+	font-size: 18px;
+	padding: 6px 4px;
+	}
+
+/* headers */
+h2.page-title {
+	margin-bottom: 15px;
+	}
+
+/* text */
+small {
+	font-size: 10px;
+	line-height: 12px;
+	}
+
 
 /*//	=HEADER */
 
-#masthead {
-	height: 70px;
+.navbar form {
+	margin-bottom: 0;
 	}
 
 /* search form */
 #site-search {
-	margin-top: 13px;
+	margin-top: 11px;
+	}
+#site-search form {
+	margin-bottom: 0 !important;
 	}
 #site-search input {
 	width: 264px;
@@ -47,12 +67,15 @@ div#content {
 div.language-box {
 	padding: 0;
 	margin: 0;
+	float: none;
 	}
 div.language-box select {
-	width: 220px;
+	width: auto;
 	padding: 0;
 	font-size: inherit;
 	color: #000;
+	margin-top: 5px;
+	font-size: 11px;
 	}
 
 /* submit button */
@@ -99,6 +122,19 @@ div.slider-holder {
 	margin: 5px 0;
 	}
 
+/* controls */
+.rb_nav-controls table ul {
+	margin: 0;
+	}
+
+/* filters */
+#col-filters ul.filter-list {
+	margin: 0;
+	}
+ul.filter-list li a {
+	padding-left: 0;
+	}
+
 /* map */
 .report-map .map-holder,
 .report_map {
@@ -119,6 +155,16 @@ div.submit-incident {
 /* Map edits */
 .map {
 	clear: both;
+	}
+
+
+/*//	=SUBMIT REPORT */
+
+.map_btns {
+	
+	}
+.map-btns ul li {
+	display: inline;
 	}
 
 

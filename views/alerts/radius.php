@@ -19,7 +19,7 @@
 		<?php $css_class = (isset($css_class))? $css_class : "map-holder"; ?>
 		<div class="<?php echo $css_class; ?>" id="divMap"></div>
 	</div>
-	<div class="report-find-location">
+	<div class="well">
 		<div class="alert_slider">
 			<select name="alert_radius" id="alert_radius">
 				<option value="1">1 KM</option>
@@ -33,11 +33,9 @@
 		
 	<?php if ($enable_find_location): ?>
 		<?php print form::input('location_find', '', ' title="City, State and/or Country" class="findtext"'); ?>
-		<div style="float:left;margin:9px 0 0 5px;">
-			<input type="button" name="button" id="button" value="<?php echo Kohana::lang('ui_main.find_location'); ?>" class="btn_find" />
-		</div>
+		<input type="button" name="button" id="button" value="<?php echo Kohana::lang('ui_main.find_location'); ?>" class="btn" />
 		<div id="find_loading" class="report-find-loading"></div>
-		<div style="clear:both;" id="find_text">* <?php echo Kohana::lang('ui_main.alerts_place_spot2'); ?></div>
+		<div id="find_text">* <?php echo Kohana::lang('ui_main.alerts_place_spot2'); ?></div>
 	<?php endif; ?>
 		
 	</div>
