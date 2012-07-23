@@ -7,15 +7,23 @@ Author Email: rob@rrbaker.com
 
 Notes
 ---
-
 *** STILL AN ALPHA VERSION; VERY MUCH A WORK IN PROGRESS
 
-Strapped is developer for Ushahidi v2.4. Previous versions will not work because older versions of the platform ran on older versions of jQuery.
+Booty is a theme for Ushahidi platform, v2.5.X. Unfortunately, previous versions of Ushahidi are not compatible with this theme as they used older versions of jQuery and due to the recent, extensive theme filesystem restructuring.
+
+Booty is based on the Twitter Bootstrap Framework: http://twitter.github.com/bootstrap.
 
 
 Installation
 ---
 1. Download theme
 2. Unpack the theme archive (.zip or .gz)
-3. Upload the entire "strapped" folder the to the "themes" folder of your Ushahidi application
-4. Log in to the administration of your instance and switch to the "Strapped" theme under "Addons -> Themes".
+3. Upload the entire "booty" folder the to the "themes" folder of your Ushahidi application
+4. Log in to the administration of your instance and switch to the "Booty" theme under "Addons -> Themes".
+
+
+Changelog
+---
+30 July 2012
+- Initial release
+- Launching with Bootstrap v2.0.4 and some plugins
