@@ -220,7 +220,7 @@
 					<span class="required">*</span>
 					<span class="example"><?php echo Kohana::lang('ui_main.detailed_location_example'); ?></span>
 				</label>
-				<?php print form::input('location_name', $form['location_name'], ' class="text long"'); ?>
+				<?php print form::input('location_name', $form['location_name'], ' class="span3"'); ?>
 			</div>
 
 			<!-- News Fields -->
@@ -240,7 +240,7 @@
 				<?php else: ?>
 					<?php foreach ($form['incident_news'] as $value): ?>
 					<div class="report_row" id="<?php echo $i; ?>">
-						<?php echo form::input('incident_news[]', $value, ' class="text long2"'); ?>
+						<?php echo form::input('incident_news[]', $value, ' class="span5"'); ?>
 						<a href="#" class="add" onClick="addFormField('divNews','incident_news','news_id','text'); return false;">add</a>
 
 						<?php if ($i != 0): ?>
@@ -259,7 +259,7 @@
 
 
 			<!-- Video Fields -->
-			<div id="report-videos" class="control-group">
+			<div id="divVideos" class="control-group">
 				<label><?php print Kohana::lang('ui_main.external_video_link'); ?></label>
 				<?php $i = (empty($form['incident_video'])) ? 1 : 0; ?>
 				<?php if (empty($form['incident_video'])): ?>

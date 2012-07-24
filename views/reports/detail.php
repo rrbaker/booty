@@ -1,29 +1,26 @@
 <div id="content" class="row">
-
 	<div class="span7">
-
-		<h1 class="report-title"><?php
-			echo strip_tags($incident_title);
-
-			// If Admin is Logged In - Allow For Edit Link
-			if ($logged_in)
-			{
-				echo " [&nbsp;<a href=\"".url::site()."admin/reports/edit/".$incident_id."\">"
-						.Kohana::lang('ui_main.edit')."</a>&nbsp;]";
-			}
-		?></h1>
-
-		<div class="report-meta">
-
+		<h1 class="report-title">
 			<?php
-				if ($incident_verified) {
-					echo '<span class="label label-success"><i class="icon-ok-sign icon-white"></i> '.Kohana::lang('ui_main.verified').'</span>';
-				} else{
-					echo '<span class="label label-important"><i class="icon-exclamation-sign icon-white"></i> '.Kohana::lang('ui_main.unverified').'</span>';
+				echo strip_tags($incident_title);
+				// If Admin is Logged In - Allow For Edit Link
+				if ($logged_in) {
+					echo " [&nbsp;<a href=\"".url::site()."admin/reports/edit/".$incident_id."\">"
+						.Kohana::lang('ui_main.edit')."</a>&nbsp;]";
 				}
 			?>
-			<span class="label"><i class="icon-calendar icon-white"></i> <?php echo $incident_time.' '.$incident_date; ?></span>
-			<span class="label"><i class="icon-map-marker icon-white"></i>  <?php echo html::specialchars($incident_location); ?></span>
+		</h1>
+
+		<div class="report-meta">
+			<?php
+				if ($incident_verified) {
+					echo '<span class="label label-success label-padded"><i class="icon-ok-sign icon-white"></i> '.Kohana::lang('ui_main.verified').'</span>';
+				} else{
+					echo '<span class="label label-important label-padded"><i class="icon-exclamation-sign icon-white"></i> '.Kohana::lang('ui_main.unverified').'</span>';
+				}
+			?>
+			<span class="label label-padded"><i class="icon-calendar icon-white"></i> <?php echo $incident_time.' '.$incident_date; ?></span>
+			<span class="label label-padded"><i class="icon-map-marker icon-white"></i>  <?php echo html::specialchars($incident_location); ?></span>
 			<?php Event::run('ushahidi_action.report_meta_after_time', $incident_id); ?>
 		</div>
 
@@ -101,22 +98,20 @@
 		<div class="report-description-text">
 			<h5><?php echo Kohana::lang('ui_main.reports_description');?></h5>
 			<?php echo $incident_description; ?>
-			<br/>
-
 
 			<!-- start news source link -->
 			<?php if( count($incident_news) > 0 ) { ?>
 			<div class="credibility">
 			<h5><?php echo Kohana::lang('ui_main.reports_news');?></h5>
+			<?php
+				foreach( $incident_news as $incident_new)
+				{
+					?>
+					<a href="<?php echo $incident_new; ?> " target="_blank"><?php
+					echo $incident_new;?></a>
+					<br/>
 					<?php
-						foreach( $incident_news as $incident_new)
-						{
-							?>
-							<a href="<?php echo $incident_new; ?> " target="_blank"><?php
-							echo $incident_new;?></a>
-							<br/>
-							<?php
-						}
+				}
 			?>
 			</div>
 			<?php } ?>
@@ -127,9 +122,7 @@
 			<div class="credibility">
 			<h5><?php echo Kohana::lang('ui_main.additional_data');?></h5>
 			<?php
-
 				echo $custom_forms;
-
 			?>
 			
 			</div>
@@ -139,7 +132,7 @@
 			<?php if ($features_count)
 			{
 				?>
-				<br /><br /><h5><?php echo Kohana::lang('ui_main.reports_features');?></h5>
+				<h5><?php echo Kohana::lang('ui_main.reports_features');?></h5>
 				<?php
 				foreach ($features as $feature)
 				{
@@ -151,21 +144,17 @@
 			}?>
 
 			<div class="credibility">
-				<table class="rating-table" cellspacing="0" cellpadding="0" border="0">
-					<tr>
-						<td><?php echo Kohana::lang('ui_main.credibility');?>:</td>
-						<td><a href="javascript:rating('<?php echo $incident_id; ?>','add','original','oloader_<?php echo $incident_id; ?>')"><img id="oup_<?php echo $incident_id; ?>" src="<?php echo url::file_loc('img'); ?>media/img/up.png" alt="UP" title="UP" border="0" /></a></td>
-						<td><a href="javascript:rating('<?php echo $incident_id; ?>','subtract','original')"><img id="odown_<?php echo $incident_id; ?>" src="<?php echo url::file_loc('img'); ?>media/img/down.png" alt="DOWN" title="DOWN" border="0" /></a></td>
-						<td><a href="" class="rating_value" id="orating_<?php echo $incident_id; ?>"><?php echo $incident_rating; ?></a></td>
-						<td><a href="" id="oloader_<?php echo $incident_id; ?>" class="rating_loading" ></a></td>
-					</tr>
-				</table>
+				<?php echo Kohana::lang('ui_main.credibility');?>:</td>
+				<a href="javascript:rating('<?php echo $incident_id; ?>','add','original','oloader_<?php echo $incident_id; ?>')"><img id="oup_<?php echo $incident_id; ?>" src="<?php echo url::file_loc('img'); ?>media/img/up.png" alt="UP" title="UP" border="0" /></a>
+				<a href="javascript:rating('<?php echo $incident_id; ?>','subtract','original')"><img id="odown_<?php echo $incident_id; ?>" src="<?php echo url::file_loc('img'); ?>media/img/down.png" alt="DOWN" title="DOWN" border="0" /></a>
+				<a href="" class="rating_value" id="orating_<?php echo $incident_id; ?>"><?php echo $incident_rating; ?></a></td>
+				<a href="" id="oloader_<?php echo $incident_id; ?>" class="rating_loading" ></a>
 			</div>
 		</div>
 
 		<?php
-						// Action::report_extra - Allows you to target an individual report right after the description
-						Event::run('ushahidi_action.report_extra', $incident_id);
+			// Action::report_extra - Allows you to target an individual report right after the description
+			Event::run('ushahidi_action.report_extra', $incident_id);
 
 			// Filter::comments_block - The block that contains posted comments
 			Event::run('ushahidi_filter.comment_block', $comments);
