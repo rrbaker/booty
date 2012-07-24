@@ -20,7 +20,6 @@ body {
 	padding: 0;
 	}
 div#content {
-	width: inherit;
 	}
 
 /* global.css overrides */
@@ -32,6 +31,9 @@ div#content {
 #incident_title {
 	font-size: 18px;
 	padding: 6px 4px;
+	}
+.label-padded {
+	padding: 5px;
 	}
 
 /* headers */
@@ -157,6 +159,11 @@ div.submit-incident {
 	clear: both;
 	}
 
+/* comments */
+div.report-comment-box {
+	padding: 0;
+	}
+
 
 /*//	=SUBMIT REPORT */
 
@@ -165,6 +172,11 @@ div.submit-incident {
 	}
 .map-btns ul li {
 	display: inline;
+	}
+
+/* multimedia form */
+a.add, a.rem {
+	display: block;
 	}
 
 
@@ -177,6 +189,7 @@ footer[role="contentinfo"] {
 	}
 #footer_inner {
 	border-top: 1px solid #ddd;
+	padding: 10px 0;
 	}
 footer[role="contentinfo"] nav ul li {
 	display: inline;
