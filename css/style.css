@@ -115,6 +115,12 @@ div.slider-holder {
 	height: auto;
 	padding: 0;
 	}
+div.slider-holder label {
+	display: inline;
+	}
+.ui-slider {
+	margin-left: 10px;
+	}
 
 
 

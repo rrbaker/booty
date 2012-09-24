@@ -36,35 +36,28 @@
 		<div id="report-details" class="span6">
 			<div class="report_row">
 				<?php if(count($forms) > 1): ?>
-				<div class="row">
-					<label><span><?php echo Kohana::lang('ui_main.select_form_type');?></span>
-					<span class="sel-holder">
+					<label><?php echo Kohana::lang('ui_main.select_form_type');?></label>
 						<?php print form::dropdown('form_id', $forms, $form['form_id'],
 					' onchange="formSwitch(this.options[this.selectedIndex].value, \''.$id.'\')"') ?>
-					</span>
-					<div id="form_loader" style="float:left;"></div>
+					<div id="form_loader"></div>
 					</label>
-				</div>
 				<?php endif; ?>
 				<label><?php echo Kohana::lang('ui_main.reports_title'); ?> <span class="required">*</span></label>
 				<?php print form::input('incident_title', $form['incident_title'], ' class="span6"'); ?>
 			</div>
 			<div class="report_row">
-				<label><?php echo Kohana::lang('ui_main.reports_description'); ?> <span class="required">*</span> </label>
-				<?php print form::textarea('incident_description', $form['incident_description'], 'rows="13" class="span6" ') ?>
+				<label><?php echo Kohana::lang('ui_main.reports_description'); ?> <span class="required">*</span></label>
+				<?php print form::textarea('incident_description', $form['incident_description'], 'rows="13" class="span6" '); ?>
 			</div>
 			<div class="report_row" id="datetime_default">
-					<label for="incident_date_time"><?php echo Kohana::lang('ui_main.date_time'); ?></label>
-					<?php print form::input('incident_date_time', ' class="span5 disabled"'); ?>
-
-					<a href="#" id="date_toggle" class="show-more"><?php echo Kohana::lang('ui_main.modify_date'); ?></a>
-
-					<?php echo Kohana::lang('ui_main.today_at')." "."<span id='current_time'>".$form['incident_hour']
-						.":".$form['incident_minute']." ".$form['incident_ampm']."</span>"; ?>
-					<?php if($site_timezone): ?>
-						<small>(<?php echo $site_timezone; ?>)</small>
-					<?php endif; ?>
-				
+				<label for="incident_date_time"><?php echo Kohana::lang('ui_main.date_time'); ?></label>
+				<?php print form::input('incident_date_time'); ?>
+				<span class="help-inline"><?php echo Kohana::lang('ui_main.today_at')." "."<span id='current_time'>".$form['incident_hour']
+					.":".$form['incident_minute']." ".$form['incident_ampm']."</span>"; ?></span>
+				<a href="#" id="date_toggle" class="btn btn-info btn-small"><i class="icon-white icon-time"></i><?php echo Kohana::lang('ui_main.modify_date'); ?></a>
+				<?php if($site_timezone): ?>
+					<small>(<?php echo $site_timezone; ?>)</small>
+				<?php endif; ?>
 			</div>
 			<div class="report_row hide" id="datetime_edit">
 				<div class="date-box">
@@ -94,11 +87,11 @@
 							$minute_array[sprintf("%02d", $j)] = sprintf("%02d", $j);
 						}
 						$ampm_array = array('pm'=>'pm','am'=>'am');
-						print form::dropdown('incident_hour',$hour_array,$form['incident_hour']);
+						print form::dropdown('incident_hour',$hour_array,$form['incident_hour'],'class="span1"');
 						print '<span class="dots">:</span>';
-						print form::dropdown('incident_minute',$minute_array,$form['incident_minute']);
+						print form::dropdown('incident_minute',$minute_array,$form['incident_minute'],'class="span1"');
 						print '<span class="dots">:</span>';
-						print form::dropdown('incident_ampm',$ampm_array,$form['incident_ampm']);
+						print form::dropdown('incident_ampm',$ampm_array,$form['incident_ampm'],'class="span1"');
 					?>
 					<?php if ($site_timezone != NULL): ?>
 						<small>(<?php echo $site_timezone; ?>)</small>
@@ -206,21 +199,22 @@
 						</ul>
 					</div>
 					
-					<?php print form::input('location_find', '', ' title="'.Kohana::lang('ui_main.location_example').'" class="findtext"'); ?>
-					<input type="button" name="button" id="button" value="<?php echo Kohana::lang('ui_main.find_location'); ?>" class="btn btn-inverse">
-
-					<div id="find_loading" class="report-find-loading"></div>
-					<small><?php echo Kohana::lang('ui_main.pinpoint_location'); ?></small>
+					<div class="report_row">
+						<div class="input-append">
+							<?php print form::input('location_find', '', ' title="'.Kohana::lang('ui_main.location_example').'" class="findtext span3"'); ?>
+							<input type="button" name="button" id="button" value="<?php echo Kohana::lang('ui_main.find_location'); ?>" class="btn btn-inverse">
+						</div>
+						<div id="find_loading" class="report-find-loading"></div>
+					</div>
+					
+					<span class="help-block"><?php echo Kohana::lang('ui_main.pinpoint_location'); ?></span>
 				</div>
 			</div>
 			<?php Event::run('ushahidi_action.report_form_location', $id); ?>
 			<div class="report_row">
-				<label>
-					<?php echo Kohana::lang('ui_main.reports_location_name'); ?> 
-					<span class="required">*</span>
-					<span class="example"><?php echo Kohana::lang('ui_main.detailed_location_example'); ?></span>
-				</label>
+				<label><?php echo Kohana::lang('ui_main.reports_location_name'); ?><span class="required">*</span></label>
 				<?php print form::input('location_name', $form['location_name'], ' class="span3"'); ?>
+				<span class="help-block"><?php echo Kohana::lang('ui_main.detailed_location_example'); ?></span>
 			</div>
 
 			<!-- News Fields -->

@@ -224,7 +224,7 @@
 
 <!-- blocks -->
 <div class="blocks row">
-	<ul class="content-column">
+	<ul class="content-column span12">
 		<?php blocks::render(); ?>
 	</ul>
 </div><!-- /blocks -->
