@@ -13,9 +13,9 @@
 	echo html::script(url::file_loc('js').'media/js/openid/openid-jquery-en', TRUE);
 	echo html::script(url::file_loc('js').'media/js/global', TRUE);
 	?>
-	<link rel="stylesheet" href="/themes/strapped/css/bootstrap.min.css">
-	<link rel="stylesheet" href="/themes/strapped/css/bootstrap-responsive.min.css">
-	<link rel="stylesheet" href="/themes/strapped/css/login.css">
+	<link rel="stylesheet" href="/themes/booty/css/bootstrap.min.css">
+	<link rel="stylesheet" href="/themes/booty/css/bootstrap-responsive.min.css">
+	<link rel="stylesheet" href="/themes/booty/css/login.css">
 	<script type="text/javascript">
 		<?php echo $js; ?>
 	</script>
